@@ -106,6 +106,12 @@ authGoogleButton.addEventListener('click', function(){
     signIn(provider);
 });
 
+authTwitterButton.addEventListener('click', function(){
+
+    var provider = new firebase.auth.TwitterAuthProvider();
+    signIn(provider);
+});
+
 function signIn(provider) {
 
     firebase.auth()

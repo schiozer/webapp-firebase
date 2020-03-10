@@ -1,4 +1,4 @@
-body{
+body {
     
     display: flex;
     min-height: 100vh;
@@ -9,4 +9,14 @@ body{
     justify-content: center;
     flex-direction: column;
     
+}
+
+.buttoncell {
+    margin:auto;
+    display:block;
+}
+
+.mytd {
+    vertical-align: center;
+    text-align: center;
 }
