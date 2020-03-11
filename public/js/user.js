@@ -1,48 +1,130 @@
 
-var usersList = document.getElementById('usersList');
-var nameInput = document.getElementById('nameInput');
-///$('#nameInput'); // usando JQuery
-var ageInput = document.getElementById('ageInput');
-var addButton = document.getElementById('addButton');
+/* Buttons */
+var authEmailPassButton = document.getElementById('authEmailPassButton');
+var createUserButton = document.getElementById('createUserButton');
+var authGitHubButton = document.getElementById('authGitHubButton');
+var authFacebookButton = document.getElementById('authFacebookButton');
+var authTwitterButton = document.getElementById('authTwitterButton');
+var authGoogleButton = document.getElementById('authGoogleButton');
+var authAnonymouslyButton = document.getElementById('authAnonymouslyButton');
+var logOutButton = document.getElementById('logOutButton');
+
+/* Inputs */
+var emailInput = document.getElementById('emailInput');
+var passwdInput = document.getElementById('passwdInput');
+
+/* Displays */
+var displayName = document.getElementById('displayName');
 
 
-addButton.addEventListener('click', function() {
+createUserButton.addEventListener('click', function(){
 
-    createUser(nameInput.value, ageInput.value);
+    firebase
+        .auth()
+        .createUserWithEmailAndPassword(emailInput.value, passwdInput.value)
+        .then(function() {
+
+            alert('Bem Vindo ' + emailInput.value);
+        })
+        .catch(function(error){
+
+            console.error(error.code);
+            console.error(error.message);
+            alert('User creation failed, check console errors');
+        });
 });
 
-// se fosse criar o evento com JQuery
-/*
-$('#addButton').on('click', function(){
+authEmailPassButton.addEventListener('click', function(){
 
+    firebase
+        .auth()
+        .signInWithEmailAndPassword(emailInput.value, passwdInput.value)
+        .then(function(result) {
+            console.log(result);
+            displayName.innerHTML = 'Bem vindo ' +  emailInput.value;
+            alert('Authenticated! ' + emailInput.value);
+        })
+        .catch(function(error){
+
+            console.error(error.code);
+            console.error(error.message);
+            alert('User authentication failed, check console errors');
+        });
 });
-*/
 
-function createUser (name, age) {
+authAnonymouslyButton.addEventListener('click', function(){
+
+    firebase
+        .auth()
+        .signInAnonymously()
+        .then(function(result) {
+            console.log(result);
+            displayName.innerText = 'Bem vindo Anônimo';
+            alert('Authenticated Anonymously');
+        })
+        .catch(function(error){
+
+            console.error(error.code);
+            console.error(error.message);
+            alert('User authentication failed, check console errors');
+        });
+});
+
+logOutButton.addEventListener('click', function(){
+
+    firebase
+        .auth()
+        .signOut()
+        .then(function() {
+
+            displayName.innerText = 'Not Authenticated';
+            alert('SignOut succeed! ' + emailInput.value);
+        })
+        .catch(function(error){
+
+            console.error(error.code);
+            console.error(error.message);
+        });
+});
     
-    var data = {
-        name: name,
-        age: age
-    }
+    
+authGitHubButton.addEventListener('click', function(){
 
-    firebase.database().ref().child('users').push(data);
-}
-
-
-
-// toda vez que o users sofrer uma alteração, dispara esse evento
-firebase.database().ref('users').on('value', function(snapshot) {
-
-    usersList.innerHTML = '';
-
-    snapshot.forEach( function(item) {
-        
-        var li = document.createElement('li');
-        
-        li.appendChild(document.createTextNode(item.val().name + ': ' + item.val().age));
-
-        usersList.appendChild(li);
-    });
-
+    var provider = new firebase.auth.GithubAuthProvider();
+    signIn(provider);
 });
 
+authFacebookButton.addEventListener('click', function(){
+
+    var provider = new firebase.auth.FacebookAuthProvider();
+    signIn(provider);
+});
+
+authGoogleButton.addEventListener('click', function(){
+
+    var provider = new firebase.auth.GoogleAuthProvider();
+    signIn(provider);
+});
+
+authTwitterButton.addEventListener('click', function(){
+
+    var provider = new firebase.auth.TwitterAuthProvider();
+    signIn(provider);
+});
+
+function signIn(provider) {
+
+    firebase.auth()
+        .signInWithPopup(provider)
+        .then(function(result){
+
+            console.log(result);
+            var token = result.credential.accessToken;
+            displayName.innerText = 'Welcome ' + result.user.displayName;
+        }).catch(function(error) {
+
+            console.log(error);
+            alert('Authentication failed');
+        });
+}
+    
