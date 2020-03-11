@@ -2,10 +2,6 @@
 
 var logOutButton = document.getElementById('logOutButton');
 
-
-
-
-
 logOutButton.addEventListener('click', function(){
 
     firebase
