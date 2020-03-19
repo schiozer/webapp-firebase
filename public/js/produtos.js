@@ -1,36 +1,12 @@
 
-var nameInput = document.getElementById('nameInput');
-var priceInput = document.getElementById('priceInput');
+// toda vez que o product sofrer uma alteração, dispara esse evento
+firebase.database().ref('/product').once('value').then(function(snapshot) {
 
-var addButton = document.getElementById('addButton');
-
-
-addButton.addEventListener('click', function() {
-
-    createProduto(nameInput.value, priceInput.value);
-});
-
-// se fosse criar o evento com JQuery
-/*
-$('#addButton').on('click', function(){
+    listProducts(snapshot);
 
 });
-*/
 
-function createProduto (name, price) {
-    
-    var data = {
-        name: name,
-        price: price
-    }
-
-    firebase.database().ref().child('produtos').push(data);
-}
-
-
-
-// toda vez que o users sofrer uma alteração, dispara esse evento
-firebase.database().ref('produtos').on('value', function(snapshot) {
+function listProducts(snapshot) {
 
     var tbody = document.getElementById('tbody');
 
@@ -68,15 +44,5 @@ firebase.database().ref('produtos').on('value', function(snapshot) {
     
     });
 
-/*
-    <tr class="table-secondary">
-      <th scope="row">Secondary</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-*/
-
-
-});
+}
 

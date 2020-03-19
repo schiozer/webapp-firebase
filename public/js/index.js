@@ -27,3 +27,10 @@ authEmailPassButton.addEventListener('click', function(){
             alert('User authentication failed, check console errors');
         });
 });
+
+$(document).ready(function(){
+    $('#passwdInput').keypress(function(e){
+      if(e.keyCode==13)
+        $('#authEmailPassButton').click();
+    });
+});

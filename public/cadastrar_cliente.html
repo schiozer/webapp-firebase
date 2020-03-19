@@ -16,34 +16,45 @@
     <h1>Customers</h1>
     <br>
     <h3 class="text-center" id="displayName"></h3>
+    
     <br>
+    <br>
+
+    <h2>Register Customer</h2>
+
 
     <div class="col-md-4">
-        <table class="table table-hover" id="table">
-            <thead>
-                <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Country</th>
-                <th scope="col">Age</th>
-                <th scope="col">ContactId</th>
-                </tr>
-            </thead>
-            <tbody id="tbody">
-            </tbody>
-        </table>
+        <div class="form-group">
+            <label for="nameInput">Name</label>
+            <input type="text" class="form-control" id="nameInput" placeholder="Name">
+        </div>
+        <div class="form-group">
+            <label for="emailInput">Email</label>
+            <input type="email" class="form-control" id="emailInput" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="countryInput">Country</label>
+            <input type="text" class="form-control" id="countryInput" placeholder="Country">
+        </div>
+        <div class="form-group">
+            <label for="ageInput">Idade</label>
+            <input type="number" class="form-control" id="ageInput" placeholder="Idade">
+        </div>
+        <div class="form-group">
+            <label for="mobileInput">Mobile</label>
+            <input type="text" class="form-control" id="mobileInput" placeholder="Mobile">
+        </div>
+        <div class="form-group">
+            <label for="devideIdInput">DecideId</label>
+            <input type="text" class="form-control" id="devideIdInput" placeholder="DecideId">
+        </div>
+
+        <br>
+        <button class="btn btn-lg btn-block btn-primary" id="saveButton">Salvar</button>
+        <br>
+        <button class="btn btn-lg btn-block btn-danger" id="cancelButton">Cancelar</button>
+        
     </div>
-
-
-    <br>
-    <br>
-    <div class="col-md-4">
-            <button class="btn btn-lg btn-block btn-primary" id="addButton" onclick="document.location.href='cadastrar_cliente.html';">Adicionar</button>
-    </div>
-
-    <br>
-    <br>
-    <a href="main.html">voltar para Home</a>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -64,7 +75,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
     
     <script src="js/app.js"></script>
-    <script src="js/cliente.js"></script>
+    <script src="js/cadastrar_cliente.js"></script>
     <script src="js/auth-handler.js"></script>
 
     </body>
