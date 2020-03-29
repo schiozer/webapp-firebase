@@ -41,6 +41,10 @@ exports.transformarUppercase = functions.database.ref('/msg/{pushId}/original').
 
 });
 
+
+/*
+https://github.com/salesforce-marketingcloud/FuelSDK-Node
+ */
 exports.consultaDataExtension = functions.https.onRequest( (req, res) => {
   
     // busca usuário no Marketing Cloud    
@@ -70,8 +74,7 @@ exports.consultaDataExtension = functions.https.onRequest( (req, res) => {
         } else {
 
           res.status = 200;
-          const ContactId = response.body.Results[0].Properties.Property.Value;
-          res.send(ContactId);
+          res.send(response);
       
         }
     })
