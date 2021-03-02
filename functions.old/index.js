@@ -1,3 +1,4 @@
+
 'use strict'
 // The Cloud Functions for Firebase SDK to create Cloud Functions and setup triggers.
 const functions = require('firebase-functions');
@@ -45,6 +46,7 @@ exports.transformarUppercase = functions.database.ref('/msg/{pushId}/original').
 /*
 https://github.com/salesforce-marketingcloud/FuelSDK-Node
  */
+
 exports.consultaDataExtension = functions.https.onRequest( (req, res) => {
   
     // busca usuário no Marketing Cloud    
@@ -80,6 +82,7 @@ exports.consultaDataExtension = functions.https.onRequest( (req, res) => {
     })
 
 });
+
 
 
 exports.customerOnWrite = functions.database.ref('/customer/{pushId}').onWrite((change, context) => {
