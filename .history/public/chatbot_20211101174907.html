@@ -13,7 +13,7 @@
 
 <body>
 
-    <h1>Web Chat</h1>
+    <h1>Chat Bot</h1>
     <br>
     <h3 class="text-center" id="displayName"></h3>
     <br>
@@ -69,30 +69,25 @@
     <style type='text/css'>
         .embeddedServiceHelpButton .helpButton .uiButton {
             background-color: #005290;
-            font-family: "Salesforce Sans", sans-serif;
+            font-family: "Arial", sans-serif;
         }
         .embeddedServiceHelpButton .helpButton .uiButton:focus {
             outline: 1px solid #005290;
         }
-        @font-face {
-            font-family: 'Salesforce Sans';
-            src: url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.woff') format('woff'),
-            url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.ttf') format('truetype');
-        }
     </style>
-
+    
     <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
     <script type='text/javascript'>
         var initESW = function(gslbBaseURL) {
             embedded_svc.settings.displayHelpButton = true; //Or false
             embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
+    
             //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
             //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-
+    
             //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
             //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
+    
             // Settings for Chat
             //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
                 // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
@@ -101,30 +96,30 @@
             //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
             //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
             //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-
+    
             embedded_svc.settings.enabledFeatures = ['LiveAgent'];
             embedded_svc.settings.entryFeature = 'LiveAgent';
-
+    
             embedded_svc.init(
-                'https://brownsun1omnicorp-dev-ed.my.salesforce.com',
-                'https://fschiozer-2021-10-29-developer-edition.na163.force.com/liveAgentSetupFlow',
+                'https://resourceful-unicorn-8bq2hf-dev-ed.my.salesforce.com',
+                'https://meuclientetuknovo-developer-edition.na163.force.com',
                 gslbBaseURL,
-                '00D5f000005unWz',
-                'Chat_Agents',
+                '00D5f000005vnNp',
+                'Ursa_Major_Solar_Chat_Agents',
                 {
                     baseLiveAgentContentURL: 'https://c.la4-c1-ia4.salesforceliveagent.com/content',
-                    deploymentId: '5725f000000HuJL',
-                    buttonId: '5735f000000HvM1',
+                    deploymentId: '5725f0000004zF6',
+                    buttonId: '5735f0000004zWK',
                     baseLiveAgentURL: 'https://d.la4-c1-ia4.salesforceliveagent.com/chat',
-                    eswLiveAgentDevName: 'Chat_Agents',
-                    isOfflineSupportEnabled: true
+                    eswLiveAgentDevName: 'Ursa_Major_Solar_Chat_Agents',
+                    isOfflineSupportEnabled: false
                 }
             );
         };
-
+    
         if (!window.embedded_svc) {
             var s = document.createElement('script');
-            s.setAttribute('src', 'https://brownsun1omnicorp-dev-ed.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+            s.setAttribute('src', 'https://resourceful-unicorn-8bq2hf-dev-ed.my.salesforce.com/embeddedservice/5.0/esw.min.js');
             s.onload = function() {
                 initESW(null);
             };
