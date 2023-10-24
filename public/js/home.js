@@ -1,4 +1,6 @@
 
+document.cookie = "justaname=John Doe";
+
 // toda vez que o product sofrer uma alteração, dispara esse evento
 firebase.database().ref('/product').once('value').then(function(snapshot) {
 

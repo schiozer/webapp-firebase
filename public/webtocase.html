@@ -1,0 +1,93 @@
+<html>
+
+<head>
+    <title>Hello World with Firebase</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <!--o usuário caso veja o site no mobile, não conseguirá dar zoom-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link rel="stylesheet" href="//bootswatch.com/4/lumen/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+        <!--  ----------------------------------------------------------------------  -->
+        <!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
+        <!--  If necessary, please modify the charset parameter to specify the        -->
+        <!--  character set of your HTML page.                                        -->
+        <!--  ----------------------------------------------------------------------  -->
+
+    <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+     function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
+    </script>
+
+</head>
+
+<body>
+
+    <h1>Web-to-Case</h1>
+    <br>
+    <h3 class="text-center" id="displayName"></h3>
+    <br>
+
+    <!--  ----------------------------------------------------------------------  -->
+    <!--  NOTE: Please add the following <FORM> element to your page.             -->
+    <!--  ----------------------------------------------------------------------  -->
+
+    <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
+
+        <input type=hidden name='captcha_settings' value='{"keyname":"MyFirebase","fallback":"true","orgId":"00DDn00000CaHUH","ts":""}'>
+        <input type=hidden name="orgid" value="00DDn00000CaHUH">
+        <input type=hidden name="retURL" value="https://pocfirebase-304fb.web.app/webtocase.html">
+
+        <!--  ----------------------------------------------------------------------  -->
+        <!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
+        <!--  these lines if you wish to test in debug mode.                          -->
+        <!--  <input type="hidden" name="debug" value=1>                              -->
+        <!--  <input type="hidden" name="debugEmail"                                  -->
+        <!--  value="fschiozer@salesforce.com">                                       -->
+        <!--  ----------------------------------------------------------------------  -->
+        <label for="name">Contact Name</label><input  id="name" maxlength="80" name="name" size="20" type="text" /><br>
+        <label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
+        <label for="phone">Phone</label><input  id="phone" maxlength="40" name="phone" size="20" type="text" /><br>
+        <label for="subject">Subject</label><input  id="subject" maxlength="80" name="subject" size="20" type="text" /><br>
+        <label for="description">Description</label><textarea name="description"></textarea><br>
+        <input type="hidden"  id="external" name="external" value="1" /><br>
+        <div class="g-recaptcha" data-sitekey="6LfM2okkAAAAAMzVEMvuA4f8tKLNrMKI6kx6jufE"></div><br>
+        <input type="submit" name="submit">
+
+    </form>
+
+    <br>
+    <a href="main.html">voltar para Home</a>
+
+    <script src="//code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="//stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="//www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
+    <script src="//www.gstatic.com/firebasejs/7.9.1/firebase-database.js"></script>
+    <script src="//www.gstatic.com/firebasejs/7.9.1/firebase-auth.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="//www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/auth-handler.js"></script>
+
+
+
+
+
+
+
+</body>
+
+</html>
